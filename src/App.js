@@ -62,51 +62,26 @@ const App = () => {
     setMoveableComponents(updatedMoveables);
   };
 
-  const handleResizeStart = (index, e) => {
-    console.log("e", e.direction);
-    // Check if the resize is coming from the left handle
-    const [handlePosX, handlePosY] = e.direction;
-    // 0 => center
-    // -1 => top or left
-    // 1 => bottom or right
-
-    // -1, -1
-    // -1, 0
-    // -1, 1
-    if (handlePosX === -1) {
-      console.log("width", moveableComponents, e);
-      // Save the initial left and width values of the moveable component
-      const initialLeft = e.left;
-      const initialWidth = e.width;
-
-      // Set up the onResize event handler to update the left value based on the change in width
-    }
-  };
-
   const handleDeleteComponent = (id) => {
     const updatedComponents = moveableComponents.filter((item) => item.id !== id);
     setMoveableComponents(updatedComponents);
   };
 
   return (
-    <main>
-      <button onClick={addMoveable}>Add Moveable1</button>
+    <main className="main">
+      <div className="divAdd">
+        <button className="button" onClick={addMoveable}>Add Moveable1</button>
+      </div>
+      <div className="divParent">
       <div
         id="parent"
-        style={{
-          position: "relative",
-          background: "black",
-          height: "80vh",
-          width: "80vw",
-          overflow: "hidden",
-        }}
+        className="parent"
       >
         {moveableComponents.map((item, index) => (
           <Component
             {...item}
             key={index}
             updateMoveable={updateMoveable}
-            handleResizeStart={handleResizeStart}
             setSelected={setSelected}
             isSelected={selected === item.id}
             onDelete={handleDeleteComponent}
@@ -115,6 +90,8 @@ const App = () => {
           />
         ))}
       </div>
+      </div>
+      
     </main>
   );
 };

@@ -75,7 +75,7 @@ const Component = ({
     useEffect(() => {
         setContador(contador+1)
     }, [image])
-  console.log(image, 'llll')
+
     return (
       <div
         ref={ref}
@@ -91,24 +91,17 @@ const Component = ({
         }}
         onClick={() => setSelected(id)}
       >
-        <div style={{ display: "flex", justifyContent: "end" }}>
+        <div className="divButton">
           <button
-            style={{
-              backgroundColor: color,
-              color: "white",
-              border: "none",
-            }}
-            onClick={handleDelete}
+          className="buttonDelete"
+          onClick={handleDelete}
           >
             x
           </button>
         </div>
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <div className="divImage">
         {image[contador] && (
-            <img src={image[contador]} alt="Descripción de la imagen"  style={{
-              maxWidth: "80%",
-              maxHeight: "80%",
-            }}/>
+            <img src={image[contador]} alt="Descripción de la imagen"/>
         )}
 
         </div>
